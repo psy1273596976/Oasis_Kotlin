@@ -1,4 +1,4 @@
-package com.example.oasis.model
+package com.example.oasis.net
 
 //data class BaseResp<out T>(val errno:Int,val errmsg:Int,val data:T)
 
