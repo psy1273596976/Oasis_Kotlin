@@ -46,7 +46,6 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>
             override fun getCount(): Int {
                 return mf.size
             }
-
         }
         home_tab.setupWithViewPager(home_viewpager)
         home_tab.getTabAt(0)?.text = "同城"
