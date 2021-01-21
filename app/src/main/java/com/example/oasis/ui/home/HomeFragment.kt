@@ -32,7 +32,6 @@ class HomeFragment : BaseFragment<HomeViewModel,FragmentHomeBinding>
 
     override fun initView() {
         initVp()
-
     }
 
     private fun initVp() {
