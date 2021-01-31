@@ -10,4 +10,7 @@ object Injection {
     val repository:SystemRepository by lazy {
         SystemRepository()
     }
+
+    // 创建数据仓库
+    //var repository:SystemRepository = SystemRepository()
 }

@@ -25,5 +25,10 @@ class SystemRepository {
         serviceApi.refreshToken()
     }
 
+    //TODO 希望在协程里进行  所以使用suspend修饰
+
+    //TODO 获取主页推荐的 Tab页的数据
+
+
 
 }
