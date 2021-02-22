@@ -2,6 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.oasis">
 
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <uses-permission android:name="android.permission.BROADCAST_STICKY" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" /> <!-- 相机权限 -->
+    <uses-permission android:name="android.permission.CAMERA" />
+
+
     <application
         android:name=".app.MyApp"
         android:allowBackup="true"
@@ -9,8 +17,14 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launchers"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".ui.guidance.SexActivity"></activity>
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+        <activity android:name=".ui.issue.SubmitMoreActivity"></activity>
+        <activity android:name=".ui.issue.ChannelActivity"/>
+        <activity android:name=".ui.issue.ThemeActivity"/>
+        <activity android:name=".ui.issue.AddressActivity"/>
+        <activity android:name=".ui.issue.TagsActivity" />
+        <activity android:name=".ui.guidance.SexActivity" />
         <activity android:name=".ui.login.RegisterActivity" />
         <activity android:name=".ui.guidance.IntroductionActivity">
             <intent-filter>
@@ -20,7 +34,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.issue.IssueActivity" />
-        <activity android:name=".ui.OasisActivity"></activity>
+        <activity android:name=".ui.OasisActivity" />
         <activity android:name=".MainActivity" />
     </application>
 

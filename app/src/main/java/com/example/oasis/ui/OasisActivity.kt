@@ -6,9 +6,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.FragmentManager
 import com.example.oasis.R
+import com.example.oasis.app.Constants
 import com.example.oasis.base.BaseActivity
 import com.example.oasis.databinding.ActivityOasisBinding
 import com.example.oasis.ui.issue.IssueActivity
+import com.example.oasis.utils.MyMmkv
 import com.example.oasis.viewmodel.OasisViewModel
 
 //TODO 界面搭建
@@ -51,7 +53,10 @@ class OasisActivity : BaseActivity<OasisViewModel,ActivityOasisBinding>
     }
 
     override fun initData() {
-
+        //模拟已经登录
+        MyMmkv.setValue("uid","21244f6f-4aed-4914-b824-9deead555c79")
+        MyMmkv.setValue(Constants.token_key,"sprout-token")
+        MyMmkv.setValue(Constants.token,"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMjEyNDRmNmYtNGFlZC00OTE0LWI4MjQtOWRlZWFkNTU1Yzc5IiwicmFuZG9tIjoibWpodHRnaDllNiIsImlhdCI6MTYxMzk4NTI4Nn0.3u4ruxA8OR0QwgKV38E_Vti9329wkz4UBbCRlwi_GfA")
     }
 
     override fun initVariable() {

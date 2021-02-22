@@ -15,6 +15,7 @@ import java.util.concurrent.TimeUnit
 
 class RetrofitFactory {
 
+
     /**
      * 伴生对象 单例
      */
@@ -29,22 +30,21 @@ class RetrofitFactory {
     init {
         //通用拦截
         interceptor = Interceptor {
-            chain -> val request = chain.request()
-                .newBuilder()
-                .addHeader("charset","UTF-8")
-                .addHeader("token", MyMmkv.getString(Constants.token))
-                .build()
-
+                chain -> val request = chain.request()
+            .newBuilder()
+            .addHeader("charset","UTF-8")
+            .addHeader(MyMmkv.getString(Constants.token_key),MyMmkv.getString(Constants.token))
+            .build()
             chain.proceed(request)
         }
 
         //Retrofit实例化
         retrofit = Retrofit.Builder()
-                .baseUrl(Constants.BASE_URL)
-                .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .client(initClient())
-                .build()
+            .baseUrl(Constants.BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
+            .client(initClient())
+            .build()
     }
 
     /*
@@ -52,11 +52,11 @@ class RetrofitFactory {
      */
     private fun initClient(): OkHttpClient {
         return OkHttpClient.Builder()
-                .addInterceptor(LoggingInterceptor())
-                //.addInterceptor(interceptor)
-                .connectTimeout(6, TimeUnit.SECONDS)
-                .readTimeout(6, TimeUnit.SECONDS)
-                .build()
+            .addInterceptor(LoggingInterceptor())
+            .addInterceptor(interceptor)
+            .connectTimeout(60, TimeUnit.SECONDS)
+            .readTimeout(60, TimeUnit.SECONDS)
+            .build()
     }
 
     /*
@@ -65,10 +65,7 @@ class RetrofitFactory {
     class LoggingInterceptor:Interceptor{
         override fun intercept(chain: Interceptor.Chain): Response {
             var request = chain.request()
-            var response = chain.proceed(request)
-            var responseBody = response.peekBody(Long.MAX_VALUE)
-            Log.i("responseBody",responseBody.string())
-            return response
+            return chain.proceed(request)
         }
     }
 

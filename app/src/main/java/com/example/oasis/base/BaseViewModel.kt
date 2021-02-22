@@ -29,7 +29,7 @@ open class BaseViewModel(val repository: SystemRepository):ViewModel() {
 
             when(result.errno){
                 0 -> {
-                    MyMmkv.setValue(Constants.token,result.data)
+                    //MyMmkv.setValue(Constants.token,result.data)
                     refreshToken.postValue(1)
                 }
                 665 -> {

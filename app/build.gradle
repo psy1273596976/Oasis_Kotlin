@@ -30,8 +30,13 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    //开启dataBinding功能支持
+    dataBinding {
+        enabled = true
+    }
     buildFeatures {
         dataBinding true
+        viewBinding true
     }
     kapt {
         generateStubs = true
@@ -79,6 +84,15 @@ dependencies {
     implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
     implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
 
+    //加载图片Glid
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+
+    //本地相机相册选择图片
+    implementation 'com.github.LuckSiege.PictureSelector:picture_library:v2.5.3'
+
+    //图片的放大缩小
+    implementation 'com.bm.photoview:library:1.4.1'
+
     /*//网络请求cookie缓存
     implementation 'com.github.franmontiel:PersistentCookieJar:v1.0.1'
 
@@ -116,4 +130,7 @@ dependencies {
     //跑马灯
     implementation 'com.xj.marqueeView:marqueeView:0.1.20'
 
+
+    //oss
+    implementation 'com.aliyun.dpa:oss-android-sdk:+'
 }

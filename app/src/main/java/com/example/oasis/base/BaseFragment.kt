@@ -1,5 +1,7 @@
 package com.example.oasis.base
 
+import android.app.Activity
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,12 +15,17 @@ abstract class BaseFragment<VM:BaseViewModel,DB:ViewDataBinding>(var layoutId:In
 
     protected lateinit var mViewModel:VM
     protected lateinit var mDataBinding:DB
+    protected lateinit var mContext: Context
+    protected lateinit var mActivity: Activity
+
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        mContext = this.context!!
+        mActivity = activity!!
         mDataBinding = DataBindingUtil.inflate(inflater,layoutId,container,false)
         mViewModel = ViewModelProvider(this).get(vmClass)
         var mView = mDataBinding.root
